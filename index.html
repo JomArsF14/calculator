@@ -10,8 +10,8 @@
     <div class="container">
         <div class="calculator">
             <input type="text" placeholder="0" id="outputscreen">
-            <button onclick="clear">Cl</button>
-            <button onclick="delete">Del</button>
+            <button onclick="Clear()">Cl</button>
+            <button onclick="del()">Del</button>
             <button onclick="display('%')">%</button>
             <button onclick="display('/')">/</button>
             <button onclick="display('7')">7</button>
@@ -28,9 +28,33 @@
             <button onclick="display('+')">+</button>
             <button onclick="display('.')">.</button>
             <button onclick="display('0')">0</button>
-            <button onclick="Calculator()" class="equal">=</button>
+            <button onclick="Calculate()" class="equal">=</button>
         </div>
     </div>
+    <script>
+        let outputScreen = document.getElementById("outputscreen")
+
+        function display(num){
+            outputScreen.value += num
+        }
+        function Clear(){
+            outputScreen.value = "";
+        }
+
+        function del(){
+            outputScreen.value = outputScreen.value.slice(0,-1);
+        }
+
+        function Calculate(){
+         try{
+            outputScreen.value = eval(outputScreen.value)
+         }
+         catch(err)
+         {
+            alert("Invalid")
+         }
+        }
+    </script>
 
     
 </body>
